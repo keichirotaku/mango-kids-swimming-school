@@ -190,5 +190,37 @@
   </main>
   <footer><div class="wrap foot"><strong>망고키즈수영장</strong><span>어린이 수영 · 생존수영</span><span>Copyright © 망고키즈수영장</span></div></footer>
   <div class="mobile-cta" aria-label="빠른 상담"><a class="button secondary" href="tel:0513618883">화명본점 전화</a><a class="button primary" href="tel:0515051212">중앙본점 전화</a></div>
+  <script>
+    // Pages CMS에서 저장한 콘텐츠를 홈페이지 화면에 반영합니다.
+    fetch("./data/site-content.json?v=" + Date.now(), { cache: "no-store" })
+      .then(function (response) { if (!response.ok) throw new Error("content unavailable"); return response.json(); })
+      .then(function (content) {
+        var text = function (selector, value) { var node = document.querySelector(selector); if (node && typeof value === "string") node.textContent = value; };
+        var hero = content.hero || {};
+        text(".hero .eyebrow", hero.eyebrow);
+        var title = document.querySelector(".hero h1");
+        if (title && hero.titleLine1 && hero.titleLine2) {
+          title.replaceChildren(document.createTextNode(hero.titleLine1), document.createElement("br"));
+          var emphasis = document.createElement("em"); emphasis.textContent = hero.titleLine2; title.appendChild(emphasis);
+        }
+        text(".hero-inner > p", hero.description);
+        var quick = document.querySelector(".quick-info");
+        if (quick && Array.isArray(hero.quickInfo)) quick.replaceChildren(...hero.quickInfo.map(function (item) { var span = document.createElement("span"); span.textContent = item; return span; }));
+        var cards = document.querySelectorAll("#classes .card");
+        (content.classes || []).forEach(function (item, i) { var card = cards[i]; if (!card) return; var icon = card.querySelector(".icon"); if (icon) icon.textContent = item.icon || ""; var h = card.querySelector("h3"); if (h) h.textContent = item.title || ""; var p = card.querySelector("p"); if (p) p.textContent = item.description || ""; var tag = card.querySelector(".tag"); if (tag) tag.textContent = item.tag || ""; });
+        var steps = document.querySelectorAll("#process .step");
+        (content.process || []).forEach(function (item, i) { var step = steps[i]; if (!step) return; var h = step.querySelector("h3"); if (h) h.textContent = item.title || ""; var p = step.querySelector("p"); if (p) p.textContent = item.description || ""; });
+        var benefit = content.benefit || {};
+        text("#benefit .label", benefit.label); text("#benefit .offer h2", benefit.title); text("#benefit .offer p", benefit.description);
+        var discounts = document.querySelector("#benefit .discounts");
+        if (discounts && Array.isArray(benefit.discounts)) discounts.replaceChildren(...benefit.discounts.map(function (item) { var span = document.createElement("span"); span.className = "discount"; span.textContent = item; return span; }));
+        text(".promise h2", (content.promise || {}).title); text(".promise p", (content.promise || {}).description);
+        var faq = document.querySelectorAll("#faq details");
+        (content.faq || []).forEach(function (item, i) { var row = faq[i]; if (!row) return; var q = row.querySelector("summary"); if (q) q.textContent = item.question || ""; var a = row.querySelector("p"); if (a) a.textContent = item.answer || ""; });
+        var branches = document.querySelectorAll("#branches .branch");
+        (content.branches || []).forEach(function (item, i) { var branch = branches[i]; if (!branch) return; var h = branch.querySelector("h3"); if (h) h.textContent = item.name || ""; var paragraphs = branch.querySelectorAll("p"); if (paragraphs[0]) paragraphs[0].textContent = item.address || ""; var actions = branch.querySelectorAll(".branch-cta a"); if (actions[0]) { actions[0].href = "tel:" + String(item.phone || "").replace(/[^+\\d]/g, ""); actions[0].textContent = "전화 상담 " + (item.phone || ""); } if (actions[1] && item.mapUrl) actions[1].href = item.mapUrl; });
+      })
+      .catch(function () { /* JSON 로드 전에도 기본 HTML 문구를 그대로 보여줍니다. */ });
+  </script>
 </body>
 </html>
