@@ -1,0 +1,28 @@
+name: Verify live Google file with Chrome
+on:
+  push:
+    branches: [check/google-verification-d28bf2a]
+permissions: {}
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - name: Open published URL with Chrome
+        run: |
+          npm install --no-save --ignore-scripts playwright-core@1.55.0
+          node <<'JS'
+          const { chromium } = require('playwright-core');
+          (async () => {
+            const browser = await chromium.launch({channel: 'chrome'});
+            try {
+              const page = await browser.newPage();
+              const url = 'https://www.mangokidz.com/googlebe6260c006feeac9.html';
+              const expected = 'google-site-verification: googlebe6260c006feeac9.html';
+              const response = await page.goto(url);
+              const body = await page.locator('body').innerText();
+              console.log(browser.version(), page.url(), response.status(), body.trim());
+              if (page.url() !== url || response.status() !== 200 || body.trim() !== expected) throw Error('Verification file mismatch');
+            } finally { await browser.close(); }
+          })().catch(error => { console.error(error); process.exitCode = 1; });
+          JS
