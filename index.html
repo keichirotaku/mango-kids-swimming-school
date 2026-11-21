@@ -28,8 +28,9 @@
     .wrap{width:min(1120px,calc(100% - 40px));margin:auto}
     header{position:sticky;top:0;z-index:5;background:#ffffffed;backdrop-filter:blur(12px);border-bottom:1px solid #e6f0f6}
     .nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-    .brand{font-weight:900;color:var(--navy);font-size:1.15rem;text-decoration:none;letter-spacing:-.04em;white-space:nowrap}
-    .brand span{color:var(--orange)}
+    .brand{display:inline-flex;align-items:center;gap:8px;font-weight:900;color:var(--navy);font-size:1.15rem;text-decoration:none;letter-spacing:-.04em;white-space:nowrap}
+    .brand img{display:block;width:48px;height:auto;flex:none}
+    @media(max-width:700px){.brand img{width:38px}.nav{column-gap:8px}}
     nav{display:flex;align-items:center;gap:22px;font-size:.95rem}
     nav a{text-decoration:none;font-weight:750}
     .nav-cta,.button{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;font-weight:850;border-radius:999px;padding:11px 18px;min-height:48px}
@@ -94,7 +95,7 @@
 <body>
   <header>
     <div class="wrap nav">
-      <a class="brand" href="#top" aria-label="망고키즈수영장 홈"><span>●</span> 망고키즈수영장</a>
+      <a class="brand" href="#top" aria-label="망고키즈수영장 홈"><img src="./assets/header-logo.png" width="48" height="47" alt="">망고키즈수영장</a>
       <nav aria-label="주요 메뉴">
         <a href="#classes">수업 안내</a>
         <a href="#process">수업 과정</a>
