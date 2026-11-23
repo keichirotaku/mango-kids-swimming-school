@@ -92,6 +92,13 @@
     @media(max-width:390px){.steps{grid-template-columns:1fr}}
     .staff-entry{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border:1px solid #8299aa;border-radius:8px;background:transparent;color:#f3f8fc;font:inherit}
     .staff-entry small{color:#c3d5e2}
+    .facility-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:24px;align-items:start}
+    .facility-layout figure{margin:0}.facility-layout img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:12px}
+    .facility-layout figcaption{margin-top:6px;color:var(--muted);font-size:.9rem}
+    .facility-layout h3{margin:0 0 6px;color:var(--navy)}.facility-layout p{margin:0 0 16px}
+    .facility-layout table{border-collapse:collapse;width:100%;font-size:.96rem}.facility-layout caption{text-align:left;font-weight:800;margin-bottom:7px}
+    .facility-layout th,.facility-layout td{border:1px solid var(--line);padding:8px;text-align:left;overflow-wrap:anywhere}.facility-layout thead{background:var(--sky)}.facility-layout tbody th{white-space:nowrap}
+    @media(max-width:800px){.facility-layout{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -170,6 +177,28 @@
         <div class="promise">
           <div><h2>망설이는 순간도 상담해 주세요</h2><p>수영이 처음인지, 어떤 반이 맞을지 함께 이야기 나누고 아이에게 맞는 시작 방법을 안내해 드릴게요.</p></div>
           <a class="button primary" href="#branches">가까운 지점 찾기</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="facilities" aria-labelledby="facilities-title">
+      <div class="wrap">
+        <div class="section-heading"><h2 id="facilities-title">중앙본점 시설 안내</h2><p>부산광역시 연제구 거제대로252번길 20, 1층</p></div>
+        <div class="facility-layout">
+          <figure><a href="./assets/jungang-facilities.png"><img src="./assets/jungang-facilities.png" width="718" height="519" loading="lazy" alt="중앙본점 시설 현황표 원본 크게 보기"></a><figcaption>그림을 누르면 원본 크기로 볼 수 있어요.</figcaption></figure>
+          <div>
+            <h3>180평 규모의 어린이 수영장</h3><p>25m 레인 5개와 유아풀, 관람석, 놀이방을 갖추고 있습니다.</p>
+            <h3>친환경 인공 해수풀</h3><p>수영장 물의 염분 농도를 0.4~0.6%로 맞추고, 전기분해로 생성한 살균 물질로 수질을 관리합니다.</p>
+            <table><caption>시설 현황표 기준 비교</caption><thead><tr><th scope="col">구분</th><th scope="col">일반 수영장</th><th scope="col">망고키즈 중앙본점</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">대상</th><td>일반</td><td>유아·어린이</td></tr>
+                <tr><th scope="row">시설</th><td>성인 위주의 설계</td><td>어린이를 위한 설계</td></tr>
+                <tr><th scope="row">여과 순환</th><td>하루 3~4회</td><td>해수풀 하루 7~8회</td></tr>
+                <tr><th scope="row">수온</th><td>27~29℃</td><td>하절기 31℃ · 동절기 33℃</td></tr>
+                <tr><th scope="row">수심</th><td>110~130cm</td><td>85~110cm</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </section>
