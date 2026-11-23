@@ -99,6 +99,9 @@
     .facility-layout table{border-collapse:collapse;width:100%;font-size:.96rem}.facility-layout caption{text-align:left;font-weight:800;margin-bottom:7px}
     .facility-layout th,.facility-layout td{border:1px solid var(--line);padding:8px;text-align:left;overflow-wrap:anywhere}.facility-layout thead{background:var(--sky)}.facility-layout tbody th{white-space:nowrap}
     @media(max-width:800px){.facility-layout{grid-template-columns:1fr}}
+    .facility-photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:30px}
+    .facility-photos figure{margin:0}.facility-photos a,.facility-photos img{display:block}.facility-photos img{width:100%;height:auto;border-radius:12px}.facility-photos figcaption{margin-top:7px;font-weight:700;color:var(--navy)}
+    @media(max-width:700px){.facility-photos{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -199,6 +202,10 @@
               </tbody>
             </table>
           </div>
+        </div>
+        <div class="facility-photos">
+          <figure><a href="./assets/jungang-pool.jpg"><img src="./assets/jungang-pool.jpg" width="1440" height="673" loading="lazy" alt="중앙본점 실내 수영장 레인 전경"></a><figcaption>수영장 내부</figcaption></figure>
+          <figure><a href="./assets/jungang-exterior.jpg"><img src="./assets/jungang-exterior.jpg" width="1440" height="673" loading="lazy" alt="망고키즈수영장 중앙본점 간판과 1층 출입구"></a><figcaption>건물 외관</figcaption></figure>
         </div>
       </div>
     </section>
