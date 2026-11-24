@@ -93,15 +93,23 @@
     @media(max-width:390px){.steps{grid-template-columns:1fr}}
     .staff-entry{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border:1px solid #8299aa;border-radius:8px;background:transparent;color:#f3f8fc;font:inherit}
     .staff-entry small{color:#c3d5e2}
-    .facility-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:24px;align-items:start}
-    .facility-layout figure{margin:0}.facility-layout img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:12px}
-    .facility-layout figcaption{margin-top:6px;color:var(--muted);font-size:.9rem}
-    .facility-layout h3{margin:0 0 6px;color:var(--navy)}.facility-layout p{margin:0 0 16px}
-    .facility-layout table{border-collapse:collapse;width:100%;font-size:.96rem}.facility-layout caption{text-align:left;font-weight:800;margin-bottom:7px}
-    .facility-layout th,.facility-layout td{border:1px solid var(--line);padding:8px;text-align:left;overflow-wrap:anywhere}.facility-layout thead{background:var(--sky)}.facility-layout tbody th{white-space:nowrap}
+    .facility-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:24px;align-items:start}
+    .facility-summary{margin:0;padding:4px 20px;background:white;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}
+    .facility-summary > div{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;padding:16px 0}
+    .facility-summary > div + div{border-top:1px solid var(--line)}
+    .facility-summary dt{border-radius:999px;background:var(--sky);color:var(--navy);padding:3px 12px;font-weight:800}
+    .facility-summary dd{margin:0;color:var(--navy)}
+    .facility-summary dd span{display:block;margin-top:4px;color:var(--muted);font-size:.95rem}
+    .facility-layout table{width:100%;border:1px solid var(--line);border-radius:16px;overflow:hidden;border-spacing:0;font-size:.96rem;text-align:center}
+    .facility-layout caption{padding-bottom:10px;color:var(--navy);font-size:1.12rem;font-weight:800}
+    .facility-layout th,.facility-layout td{padding:9px 6px;text-align:center;overflow-wrap:anywhere}
+    .facility-layout thead th{background:var(--blue);color:white}
+    .facility-layout thead th:last-child{background:var(--navy)}
+    .facility-layout tbody :is(th,td){border-top:1px solid var(--line)}
+    .facility-layout tbody td:last-child{background:var(--sky);color:var(--navy);font-weight:750}
     @media(max-width:800px){.facility-layout{grid-template-columns:1fr}}
     .facility-photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:30px}
-    .facility-photos figure{margin:0}.facility-photos a,.facility-photos img{display:block}.facility-photos img{width:100%;height:auto;border-radius:12px}.facility-photos figcaption{margin-top:7px;font-weight:700;color:var(--navy)}
+    .facility-photos figure{margin:0}.facility-photos a,.facility-photos img{display:block}.facility-photos img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:12px}.facility-photos img[src$="jungang-exterior.jpg"]{object-position:20% center}.facility-photos figcaption{margin-top:7px;font-weight:700;color:var(--navy)}
     @media(min-width:901px){#hwamyeong-facilities .facility-photos{grid-template-columns:repeat(3,minmax(0,1fr))}}
     @media(max-width:700px){.facility-photos{grid-template-columns:1fr}}
     .pswp .pswp__bg{background:rgba(0,0,0,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
@@ -191,13 +199,15 @@
 
     <section class="section" id="facilities" aria-labelledby="facilities-title">
       <div class="wrap">
-        <div class="section-heading"><h2 id="facilities-title">중앙본점 시설 안내</h2><p>부산광역시 연제구 거제대로252번길 20, 1층</p></div>
+        <div class="section-heading"><h2 id="facilities-title">중앙본점 시설 안내</h2></div>
         <div class="facility-layout">
-          <figure><a href="./assets/jungang-facilities.png" data-pswp-width="718" data-pswp-height="519"><img src="./assets/jungang-facilities.png" width="718" height="519" loading="lazy" alt="중앙본점 시설 현황표 원본 크게 보기"></a><figcaption>그림을 누르면 크게 볼 수 있어요.</figcaption></figure>
+          <dl class="facility-summary">
+            <div><dt>규모</dt><dd><strong>180평 규모</strong><span>25m 레인 5개 · 유아풀 · 관람석 · 놀이방</span></dd></div>
+            <div><dt>위치</dt><dd><strong>부산 연제구 거제대로252번길 20, 1층</strong></dd></div>
+            <div><dt>수질</dt><dd><strong>친환경 인공 해수풀</strong><span>체액 염분(0.9%)과 비슷한 0.4~0.6% 염분 농도로 맞추고, 전기분해로 만든 살균 물질로 늘 맑게 관리합니다.</span></dd></div>
+          </dl>
           <div>
-            <h3>180평 규모의 어린이 수영장</h3><p>25m 레인 5개와 유아풀, 관람석, 놀이방을 갖추고 있습니다.</p>
-            <h3>친환경 인공 해수풀</h3><p>수영장 물의 염분 농도를 0.4~0.6%로 맞추고, 전기분해로 생성한 살균 물질로 수질을 관리합니다.</p>
-            <table><caption>시설 현황표 기준 비교</caption><thead><tr><th scope="col">구분</th><th scope="col">일반 수영장</th><th scope="col">망고키즈 중앙본점</th></tr></thead>
+            <table><caption>일반 수영장과 무엇이 다른가요?</caption><thead><tr><th scope="col">구분</th><th scope="col">일반 수영장</th><th scope="col">망고키즈 중앙본점</th></tr></thead>
               <tbody>
                 <tr><th scope="row">대상</th><td>일반</td><td>유아·어린이</td></tr>
                 <tr><th scope="row">시설</th><td>성인 위주의 설계</td><td>어린이를 위한 설계</td></tr>
@@ -217,13 +227,15 @@
 
     <section class="section" id="hwamyeong-facilities" aria-labelledby="hwamyeong-facilities-title">
       <div class="wrap">
-        <div class="section-heading"><h2 id="hwamyeong-facilities-title">화명본점 시설 안내</h2><p>부산 북구 금곡대로303번길 2 지하1층</p></div>
+        <div class="section-heading"><h2 id="hwamyeong-facilities-title">화명본점 시설 안내</h2></div>
         <div class="facility-layout">
-          <figure><a href="./assets/hwamyeong-facility-guide.jpg?v=5da4da39" data-pswp-width="1199" data-pswp-height="1312"><img src="./assets/hwamyeong-facility-guide.jpg?v=5da4da39" width="1199" height="1312" loading="lazy" alt="화명본점 시설 현황표 원본 크게 보기"></a><figcaption>그림을 누르면 크게 볼 수 있어요.</figcaption></figure>
+          <dl class="facility-summary">
+            <div><dt>규모</dt><dd><strong>25m 레인 5개</strong><span>최대 120명 수용 · 스플래쉬 풀 · 학부모 관람석</span></dd></div>
+            <div><dt>위치</dt><dd><strong>부산 북구 금곡대로303번길 2, 시티타워 B1</strong></dd></div>
+            <div><dt>수질</dt><dd><strong>친환경 인공 해수풀</strong><span>체액 염분(0.9%)과 비슷한 0.4~0.6% 염분 농도로 맞추고, 전기분해로 만든 살균 물질로 늘 맑게 관리합니다.</span></dd></div>
+          </dl>
           <div>
-            <h3>25m 레인 5개를 갖춘 어린이풀</h3><p>최대 120명을 수용할 수 있습니다. 어린이풀 옆에는 스플래쉬 풀이 있고, 학부모 관람석에서는 유리창 너머로 수업을 볼 수 있습니다.</p>
-            <h3>친환경 해수풀</h3><p>수영장 물의 염분 농도를 0.4~0.6%로 맞추고, 전기분해로 생성한 살균 물질로 수질을 관리합니다.</p>
-            <table><caption>시설 현황표 기준 비교</caption><thead><tr><th scope="col">구분</th><th scope="col">일반 수영장</th><th scope="col">망고키즈 화명본점</th></tr></thead>
+            <table><caption>일반 수영장과 무엇이 다른가요?</caption><thead><tr><th scope="col">구분</th><th scope="col">일반 수영장</th><th scope="col">망고키즈 화명본점</th></tr></thead>
               <tbody>
                 <tr><th scope="row">대상</th><td>일반</td><td>유아·어린이</td></tr>
                 <tr><th scope="row">시설</th><td>성인 위주의 설계</td><td>어린이를 위한 설계</td></tr>
