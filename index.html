@@ -93,15 +93,18 @@
     @media(max-width:390px){.steps{grid-template-columns:1fr}}
     .staff-entry{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border:1px solid #8299aa;border-radius:8px;background:transparent;color:#f3f8fc;font:inherit}
     .staff-entry small{color:#c3d5e2}
-    .facility-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:24px;align-items:start}
-    .facility-summary{margin:0;padding:4px 20px;background:white;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}
+    .facility-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:24px;align-items:stretch}
+    .facility-column{display:flex;flex-direction:column;min-width:0}
+    .facility-column h3{margin:0 0 12px;text-align:left;font-size:1.05rem;color:var(--navy)}
+    .facility-summary{display:flex;flex-direction:column;justify-content:space-between;flex:1;margin:0;padding:4px 20px;background:white;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}
     .facility-summary > div{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;padding:16px 0}
     .facility-summary > div + div{border-top:1px solid var(--line)}
     .facility-summary dt{border-radius:999px;background:var(--sky);color:var(--navy);padding:3px 12px;font-weight:800}
-    .facility-summary dd{margin:0;color:var(--navy)}
+    .facility-summary dd{margin:0;padding-top:3px;color:var(--navy)}
     .facility-summary dd span{display:block;margin-top:4px;color:var(--muted);font-size:.95rem}
-    .facility-layout table{width:100%;border:1px solid var(--line);border-radius:16px;overflow:hidden;border-spacing:0;font-size:.96rem;text-align:center}
-    .facility-layout caption{padding-bottom:10px;color:var(--navy);font-size:1.12rem;font-weight:800}
+    .facility-table-wrap{flex:1;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+    .facility-layout table{table-layout:fixed;width:100%;height:100%;border-spacing:0;font-size:.96rem;text-align:center}
+    .facility-layout thead th:first-child{width:22%}
     .facility-layout th,.facility-layout td{padding:9px 6px;text-align:center;overflow-wrap:anywhere}
     .facility-layout thead th{background:var(--blue);color:white}
     .facility-layout thead th:last-child{background:var(--navy)}
@@ -201,21 +204,27 @@
       <div class="wrap">
         <div class="section-heading"><h2 id="facilities-title">중앙본점 시설 안내</h2></div>
         <div class="facility-layout">
-          <dl class="facility-summary">
-            <div><dt>규모</dt><dd><strong>180평 규모</strong><span>25m 레인 5개 · 유아풀 · 관람석 · 놀이방</span></dd></div>
-            <div><dt>위치</dt><dd><strong>부산 연제구 거제대로252번길 20, 1층</strong></dd></div>
-            <div><dt>수질</dt><dd><strong>친환경 인공 해수풀</strong><span>체액 염분(0.9%)과 비슷한 0.4~0.6% 염분 농도로 맞추고, 전기분해로 만든 살균 물질로 늘 맑게 관리합니다.</span></dd></div>
-          </dl>
-          <div>
-            <table><caption>일반 수영장과 무엇이 다른가요?</caption><thead><tr><th scope="col">구분</th><th scope="col">일반 수영장</th><th scope="col">망고키즈 중앙본점</th></tr></thead>
-              <tbody>
-                <tr><th scope="row">대상</th><td>일반</td><td>유아·어린이</td></tr>
-                <tr><th scope="row">시설</th><td>성인 위주의 설계</td><td>어린이를 위한 설계</td></tr>
-                <tr><th scope="row">여과 순환</th><td>하루 3~4회</td><td>해수풀 하루 7~8회</td></tr>
-                <tr><th scope="row">수온</th><td>27~29℃</td><td>하절기 31℃ · 동절기 33℃</td></tr>
-                <tr><th scope="row">수심</th><td>110~130cm</td><td>85~110cm</td></tr>
-              </tbody>
-            </table>
+          <div class="facility-column">
+            <h3>시설 한눈에 보기</h3>
+            <dl class="facility-summary">
+              <div><dt>규모</dt><dd><strong>180평 규모</strong><span>25m 레인 5개 · 유아풀 · 관람석 · 놀이방</span></dd></div>
+              <div><dt>위치</dt><dd><strong>부산 연제구 거제대로252번길 20, 1층</strong></dd></div>
+              <div><dt>수질</dt><dd><strong>친환경 인공 해수풀</strong><span>체액 염분(0.9%)과 비슷한 0.4~0.6% 염분 농도로 맞추고, 전기분해로 만든 살균 물질로 늘 맑게 관리합니다.</span></dd></div>
+            </dl>
+          </div>
+          <div class="facility-column">
+            <h3 id="jungang-comparison-title">일반 수영장과 무엇이 다른가요?</h3>
+            <div class="facility-table-wrap">
+              <table aria-labelledby="jungang-comparison-title"><thead><tr><th scope="col">구분</th><th scope="col">일반 수영장</th><th scope="col">망고키즈 중앙본점</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">대상</th><td>일반</td><td>유아·어린이</td></tr>
+                  <tr><th scope="row">시설</th><td>성인 위주의 설계</td><td>어린이를 위한 설계</td></tr>
+                  <tr><th scope="row">여과 순환</th><td>하루 3~4회</td><td>해수풀 하루 7~8회</td></tr>
+                  <tr><th scope="row">수온</th><td>27~29℃</td><td>하절기 31℃ · 동절기 33℃</td></tr>
+                  <tr><th scope="row">수심</th><td>110~130cm</td><td>85~110cm</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
         <div class="facility-photos">
@@ -229,21 +238,27 @@
       <div class="wrap">
         <div class="section-heading"><h2 id="hwamyeong-facilities-title">화명본점 시설 안내</h2></div>
         <div class="facility-layout">
-          <dl class="facility-summary">
-            <div><dt>규모</dt><dd><strong>25m 레인 5개</strong><span>최대 120명 수용 · 스플래쉬 풀 · 학부모 관람석</span></dd></div>
-            <div><dt>위치</dt><dd><strong>부산 북구 금곡대로303번길 2, 시티타워 B1</strong></dd></div>
-            <div><dt>수질</dt><dd><strong>친환경 인공 해수풀</strong><span>체액 염분(0.9%)과 비슷한 0.4~0.6% 염분 농도로 맞추고, 전기분해로 만든 살균 물질로 늘 맑게 관리합니다.</span></dd></div>
-          </dl>
-          <div>
-            <table><caption>일반 수영장과 무엇이 다른가요?</caption><thead><tr><th scope="col">구분</th><th scope="col">일반 수영장</th><th scope="col">망고키즈 화명본점</th></tr></thead>
-              <tbody>
-                <tr><th scope="row">대상</th><td>일반</td><td>유아·어린이</td></tr>
-                <tr><th scope="row">시설</th><td>성인 위주의 설계</td><td>어린이를 위한 설계</td></tr>
-                <tr><th scope="row">여과 순환</th><td>하루 3~4회</td><td>해수풀 하루 7~8회</td></tr>
-                <tr><th scope="row">수온</th><td>27~29℃</td><td>하절기 31℃ · 동절기 33℃</td></tr>
-                <tr><th scope="row">수심</th><td>110~130cm</td><td>85~110cm</td></tr>
-              </tbody>
-            </table>
+          <div class="facility-column">
+            <h3>시설 한눈에 보기</h3>
+            <dl class="facility-summary">
+              <div><dt>규모</dt><dd><strong>25m 레인 5개</strong><span>최대 120명 수용 · 스플래쉬 풀 · 학부모 관람석</span></dd></div>
+              <div><dt>위치</dt><dd><strong>부산 북구 금곡대로303번길 2, 시티타워 B1</strong></dd></div>
+              <div><dt>수질</dt><dd><strong>친환경 인공 해수풀</strong><span>체액 염분(0.9%)과 비슷한 0.4~0.6% 염분 농도로 맞추고, 전기분해로 만든 살균 물질로 늘 맑게 관리합니다.</span></dd></div>
+            </dl>
+          </div>
+          <div class="facility-column">
+            <h3 id="hwamyeong-comparison-title">일반 수영장과 무엇이 다른가요?</h3>
+            <div class="facility-table-wrap">
+              <table aria-labelledby="hwamyeong-comparison-title"><thead><tr><th scope="col">구분</th><th scope="col">일반 수영장</th><th scope="col">망고키즈 화명본점</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">대상</th><td>일반</td><td>유아·어린이</td></tr>
+                  <tr><th scope="row">시설</th><td>성인 위주의 설계</td><td>어린이를 위한 설계</td></tr>
+                  <tr><th scope="row">여과 순환</th><td>하루 3~4회</td><td>해수풀 하루 7~8회</td></tr>
+                  <tr><th scope="row">수온</th><td>27~29℃</td><td>하절기 31℃ · 동절기 33℃</td></tr>
+                  <tr><th scope="row">수심</th><td>110~130cm</td><td>85~110cm</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
         <div class="facility-photos">
